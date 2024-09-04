@@ -18,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.chatapplication.classes.Chat
+import com.example.chatapplication.classes.Message
 import com.example.chatapplication.ui.theme.ChatApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +59,11 @@ fun FloatingActionButton() {
 
 @Composable
 fun ChatContainer() {
-    val chatList = listOf<Chat>()
+    val chatList = listOf<Chat>(
+        Chat(messages = listOf(
+            Message(text = "HOLA", "YESTERDAY")
+        ))
+    )
     LazyColumn() {
         items(chatList) { chat ->
             ChatPreview(chat = chat)
@@ -68,5 +73,5 @@ fun ChatContainer() {
 
 @Composable
 fun ChatPreview(chat: Chat) {
-    Text("UN CHAT")
+    Text(text = chat.getLastMessage().text)
 }

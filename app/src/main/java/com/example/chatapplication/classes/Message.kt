@@ -1,5 +1,5 @@
 package com.example.chatapplication.classes
 
 
-class Message(message: String, date: String) {
+class Message(val text: String, val date: String) {
 }
